@@ -24,7 +24,11 @@ ____
 ## Примеры работы программы:
 После запуска симуляции:
 ![img.png](img.png)
+Ссылка на картинку GoogleDrive https://drive.google.com/file/d/1WiB8btkUlJ3ecE_T_IlnVUKdrw3BrOOm/view?usp=sharing
+![Alt-текст](https://drive.google.com/file/d/1WiB8btkUlJ3ecE_T_IlnVUKdrw3BrOOm/view?usp=sharing "Startt")
 
 После вымирания одного из видов животных:
 ![img_1.png](img_1.png)
+https://drive.google.com/file/d/1n7TnKFH4JVqzbC-fyL--Hm_4YQ7nEDhN/view?usp=sharing
+![Alt-текст](https://drive.google.com/file/d/1n7TnKFH4JVqzbC-fyL--Hm_4YQ7nEDhN/view?usp=sharing "Notification")
 ____
