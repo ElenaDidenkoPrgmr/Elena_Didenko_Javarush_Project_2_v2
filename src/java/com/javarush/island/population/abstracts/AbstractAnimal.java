@@ -13,7 +13,6 @@ import java.util.List;
 @Setter
 public abstract class AbstractAnimal extends Entity implements AbleToEat, Moveable, Multiplyable {
 
-
     private double satiety;
     private boolean alreadyMultiplied = true;
     private double fullSatiety;
