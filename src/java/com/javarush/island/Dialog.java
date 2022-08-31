@@ -38,7 +38,7 @@ public class Dialog {
         Island island = createIsland(answer);
         if (island != null) {
             output.println(colorize(GAME_START,Attribute.BLUE_TEXT()));
-            island.lifeCycleIslandWithPhaser(output);
+            island.lifeCycleIsland(output);
             //island.lifeCycleIslandSimple(output);
         }
     }

@@ -49,7 +49,7 @@ public class Island {
         mapCell = new HashMap[width][height];
     }
 
-    public void lifeCycleIslandWithPhaser(PrintStream output) {
+    public void lifeCycleIsland(PrintStream output) {
         Statistics statistics = new Statistics();
         initializationIsland();
         printInitialStatistics(output, statistics);
