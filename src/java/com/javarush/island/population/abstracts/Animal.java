@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public abstract class AbstractAnimal extends Entity implements AbleToEat, Moveable, Multiplyable {
+public abstract class Animal extends Entity implements AbleToEat, Moveable, Multiplyable {
 
     private double satiety;
     private boolean alreadyMultiplied = true;
@@ -20,11 +20,11 @@ public abstract class AbstractAnimal extends Entity implements AbleToEat, Moveab
 
     @Override
     public int[] move(int x, int y, int weight, int height) {
-        return (new AbstractAnimalImpl()).move(this, x,  y,  weight,  height);
+        return (new AnimalImpl()).move(this, x,  y,  weight,  height);
     }
 
     @Override
     public boolean multiply(List<Liveable> partners) {
-        return (new AbstractAnimalImpl()).multiply(this,partners);
+        return (new AnimalImpl()).multiply(this,partners);
     }
 }

@@ -4,17 +4,17 @@ import com.javarush.island.population.Liveable;
 import java.util.List;
 import java.util.Random;
 
-public class AbstractAnimalImpl{
+public class AnimalImpl {
     private final int SIDES = 4;
     private final int UP = 0;
     private final int RIGHT = 1;
     private final int DOWN = 2;
     private final int LEFT = 3;
 
-    public boolean multiply(AbstractAnimal animal,List<Liveable> partners) {
+    public boolean multiply(Animal animal, List<Liveable> partners) {
         if (animal.isAlreadyMultiplied()) {
             for (Liveable liveable : partners) {
-                var partner = (AbstractAnimal) liveable;
+                var partner = (Animal) liveable;
                 if (checkPartner(animal, partner)) {
                     animal.setAlreadyMultiplied(false);
                     partner.setAlreadyMultiplied(false);
@@ -25,11 +25,11 @@ public class AbstractAnimalImpl{
         }return false;
     }
 
-    private boolean checkPartner(AbstractAnimal animal, AbstractAnimal partner) {
+    private boolean checkPartner(Animal animal, Animal partner) {
         return animal != partner && partner.isAlreadyMultiplied();
     }
 
-    public int[] move(AbstractAnimal animal, int x, int y, int width, int height) {
+    public int[] move(Animal animal, int x, int y, int width, int height) {
         int newX = x;
         int newY = y;
         for (int i = 0; i < animal.getSpeed(); i++) {

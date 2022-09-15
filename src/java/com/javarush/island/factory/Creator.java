@@ -10,7 +10,6 @@ import com.javarush.island.service.SimulationSettings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -41,7 +40,6 @@ public class Creator {
     ).collect(Collectors.toList());
 
     public List<Liveable> getAllEntity() {
-       //List<Liveable> allEntity = new CopyOnWriteArrayList<>();
         List<Liveable> allEntity = new ArrayList<>();
         for (Liveable liveable : dictionaryEntities) {
             allEntity.add(createLive(liveable));
@@ -70,7 +68,7 @@ public class Creator {
         result = getIsCarrot(entity,result);
 
         setEntityProperties(result);
-        if (result instanceof AbstractAnimal animal) {
+        if (result instanceof Animal animal) {
             setAnimalProperties(animal);
         }
         return result;
@@ -190,7 +188,7 @@ public class Creator {
         }
     }
 
-    private void setAnimalProperties(AbstractAnimal animal) {
+    private void setAnimalProperties(Animal animal) {
         var settings = new SimulationSettings();
 
         var satietyProperty = animal.getName() + FULL_SATIETY;

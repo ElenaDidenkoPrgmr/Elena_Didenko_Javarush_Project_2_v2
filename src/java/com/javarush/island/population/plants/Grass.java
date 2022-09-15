@@ -1,8 +1,8 @@
 package com.javarush.island.population.plants;
 
-import com.javarush.island.population.abstracts.AbstractPlant;
+import com.javarush.island.population.abstracts.Plant;
 import lombok.Data;
 
 @Data
-public class Grass extends AbstractPlant{
+public class Grass extends Plant {
 }

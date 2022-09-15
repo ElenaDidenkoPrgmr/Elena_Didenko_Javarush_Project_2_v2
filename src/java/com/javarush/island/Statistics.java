@@ -3,7 +3,7 @@ package com.javarush.island;
 import com.diogonunes.jcolor.Attribute;
 import com.javarush.island.factory.Creator;
 import com.javarush.island.population.Liveable;
-import com.javarush.island.population.abstracts.AbstractAnimal;
+import com.javarush.island.population.abstracts.Animal;
 import com.javarush.island.population.abstracts.Entity;
 
 import java.io.PrintStream;
@@ -40,7 +40,7 @@ public class Statistics {
     }
 
     private void checkAnimalGameOver(PrintStream output, int newAmount, Entity entity) {
-        if (newAmount == 0 && entity instanceof AbstractAnimal && !diedAnimals.contains(entity)) {
+        if (newAmount == 0 && entity instanceof Animal && !diedAnimals.contains(entity)) {
             String deadAnimal = entity.getName() + " - all animals died. Continue...";
             output.println(colorize( deadAnimal, Attribute.RED_TEXT()));
             diedAnimals.add(entity);

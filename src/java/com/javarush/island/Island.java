@@ -3,8 +3,8 @@ package com.javarush.island;
 import com.diogonunes.jcolor.Attribute;
 import com.javarush.island.factory.Creator;
 import com.javarush.island.population.Liveable;
-import com.javarush.island.population.abstracts.AbstractAnimal;
-import com.javarush.island.population.abstracts.AbstractPlant;
+import com.javarush.island.population.abstracts.Animal;
+import com.javarush.island.population.abstracts.Plant;
 import com.javarush.island.population.abstracts.Entity;
 import com.javarush.island.service.SimulationSettings;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class Island {
     private final String LABEL_DEATH_WITHOUT_FOOD = " -  after the death of hungry animals";
     private final String LABEL_HUNTING = " -  after hunting";
     private final String LABEL_MULTIPLY = " -  after multiply animals and growing plants";
-    private final String LABEL_INITIALIZATION = " island after initialization";
+    private final String LABEL_INITIALIZATION = " - ***** - island after initialization";
     private final int X = 0;
     private final int Y = 1;
     @Getter
@@ -155,7 +155,7 @@ public class Island {
 
             while (cellIterator.hasNext()) {
                 var entity = cellIterator.next();
-                if (entity instanceof AbstractAnimal animal) {
+                if (entity instanceof Animal animal) {
                     updateSatietyAndMultiplyPossible(animal);
                     if (animal.getSatiety() < 0) {
                         cellIterator.remove();
@@ -166,7 +166,7 @@ public class Island {
         }
     }
 
-    private void updateSatietyAndMultiplyPossible(AbstractAnimal animal) {
+    private void updateSatietyAndMultiplyPossible(Animal animal) {
         animal.setAlreadyMultiplied(true);
         double starve = animal.getFullSatiety() / DAYS_LIVE_WITHOUT_EAT;
         animal.setSatiety(animal.getSatiety() - starve);
@@ -174,7 +174,7 @@ public class Island {
 
     private void growPlantOnCell(int i, int j) {
         for (Liveable typeLive : dictionaryEntities) {
-            if (typeLive instanceof AbstractPlant plant) {
+            if (typeLive instanceof Plant plant) {
                 int maxPlantAmount = (plant.getMaxAmount());
                 int plantAmount = new Random().nextInt(maxPlantAmount);
                 if (maxPlantAmount > plantAmount + mapCell[i][j].get(plant).size()) {
@@ -190,7 +190,7 @@ public class Island {
         for (var typeLive : dictionaryEntities) {
             for (var entity : mapCell[i][j].get(typeLive)) {
                 if (isHungryAnimal(entity)) {
-                    AbstractAnimal hunter = (AbstractAnimal) entity;
+                    Animal hunter = (Animal) entity;
                     var victim = hunter.getVictim(mapCell[i][j]);
                     if (victim != null) {
                         double victimWeight = victim.getWeight();
@@ -205,7 +205,7 @@ public class Island {
     }
 
     private boolean isHungryAnimal(Liveable entity) {
-        return entity instanceof AbstractAnimal hunter && hunter.getSatiety() < hunter.getFullSatiety();
+        return entity instanceof Animal hunter && hunter.getSatiety() < hunter.getFullSatiety();
     }
 
     private void animalsMove() {
@@ -223,7 +223,7 @@ public class Island {
 
             while (cellIterator.hasNext()) {
                 Liveable entity = cellIterator.next();
-                if (entity instanceof AbstractAnimal animal) {
+                if (entity instanceof Animal animal) {
                     int[] newCell = animal.move(i, j, width, height);
 
                     if ((i != newCell[X] || j != newCell[Y]) && mapCell[newCell[0]][newCell[1]].get(entity).size() < animal.getMaxAmount()) {
@@ -237,12 +237,12 @@ public class Island {
 
     private void animalsMultiplyOnCell(int i, int j){
         for (Liveable typeLive : dictionaryEntities) {
-            if (typeLive instanceof AbstractAnimal animal) {
+            if (typeLive instanceof Animal animal) {
                 {
                     int childrenAmount = 0;
                     for (var entity : mapCell[i][j].get(typeLive)) {
                         List<Liveable> partners = mapCell[i][j].get(animal);
-                        if (((AbstractAnimal) entity).multiply(partners)) {
+                        if (((Animal) entity).multiply(partners)) {
                             childrenAmount++;
                         }
                     }

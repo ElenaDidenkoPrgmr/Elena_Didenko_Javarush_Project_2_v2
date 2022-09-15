@@ -1,4 +1,4 @@
 package com.javarush.island.population.abstracts;
 
-public abstract class Carnivore extends AbstractAnimal{
+public abstract class Carnivore extends Animal {
 }
